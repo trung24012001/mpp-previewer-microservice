@@ -26,5 +26,5 @@ COPY table-renderer-service/dist dist
 WORKDIR ../../
 COPY package*.json ./
 RUN npm install
-COPY index.js ./
-CMD node index.js
+COPY src/index.js src/index.js
+CMD node src/index.js

@@ -2,8 +2,8 @@
 
 ### Project 
 Add project into this folder to start
-- preview-mpp-java-server
-- table-renderer-service
+- [preview-mpp-java-server](https://github.com/tunghoang/preview-mpp-java-server.git)
+- [table-renderer-service](https://github.com/trung24012001/table-renderer-service.git)
 
 ### Build image docker
 ```
