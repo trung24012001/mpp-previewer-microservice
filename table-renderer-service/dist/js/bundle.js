@@ -1926,8 +1926,8 @@ MppTablevue_type_script_lang_js.__scopeId = "data-v-b0d93042"
       json: null
     };
   },
-  created: function created() {
-    delete require.cache[require.resolve('../../src/assets/data.json');
+  created: function create() {
+    delete require.cache[require.resolve('../../src/assets/data.json')];
     this.json = require('../../src/assets/data.json');
   }
 });

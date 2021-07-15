@@ -28,7 +28,7 @@ npm run pressr
 - Go to file dist/js/bundle.js
 - Replace the inside of the created function of App component by the following code:
 ```
-delete require.cache[require.resolve('../../src/assets/data.json');
+delete require.cache[require.resolve('../../src/assets/data.json')];
 this.json = require('../../src/assets/data.json');
 ```
 
