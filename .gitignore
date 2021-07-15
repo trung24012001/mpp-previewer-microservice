@@ -1,4 +1,2 @@
 node_modules/
-preview-mpp-java-server/
-table-renderer-service/
-test.js
+**/node_modules
