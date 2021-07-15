@@ -1,4 +1,4 @@
-# Preview mpp file java server
+# Java server
 
 ### Build file .jar
 - If you are running on operate system window, open commandline direct to this project folder and run
