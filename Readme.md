@@ -1,7 +1,7 @@
 ## Start service
 
 ### Setup
-change directory to preview-mpp-java-server to install maven wrapper
+Go in the preview-mpp-java-server folder and install maven wrapper
 ```
 mvn -N io.takari:maven:0.7.7:wrapper
 ```
