@@ -72,8 +72,7 @@ public class FilesController {
                 writer.write(htmlFile.toString());
                 writer.close();
 
-                message = "Convert succesfully!";
-                return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+                return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(fileGuid));
             }
 
             message = "Just convert to html!";
@@ -91,24 +90,5 @@ public class FilesController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"index.html\"").body(file);
     }
 
-    @GetMapping("/api/mppConverter")
-    public ResponseEntity<Resource> mppConverterApi(@RequestParam("file") MultipartFile file,
-                                                    @RequestParam("api-key") String apiKey, String fileFormat) {
-        ResponseEntity<ResponseMessage> messageEntity = null;
-        try {
-            messageEntity = fileUpload(file, apiKey);
-            Map<String, String> payload = new HashMap<>();
-            String fileGuid = messageEntity.getBody().getMessage();
-            payload.put("fileGuid", fileGuid);
-            payload.put("format", fileFormat);
-            messageEntity = convertFile(payload);
-
-            System.out.println(messageEntity);
-            return messageEntity.getStatusCode().equals(HttpStatus.OK) ? downloadFile(fileGuid) : null;
-        } catch(Exception e) {
-            System.out.println(messageEntity);
-            return null;
-        }
-    }
 }
 
