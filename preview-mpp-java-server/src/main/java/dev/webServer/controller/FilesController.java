@@ -90,9 +90,9 @@ public class FilesController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"index.html\"").body(file);
     }
 
-     @GetMapping("/files/json/{filename:.+}")
-    public ResponseEntity<Project> getJsonFile(@PathVariable String filename) {
-        Resource file = storageService.load(filename);
+     @GetMapping("/files/json/{fileGuid}")
+    public ResponseEntity<Project> getJsonFile(@PathVariable String fileGuid) {
+        Resource file = storageService.load(fileGuid);
         Project jsonProject = convertService.toJsonProject(file.getFilename());
 
         if (jsonProject != null) {
@@ -103,6 +103,18 @@ public class FilesController {
         return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
                 .body(new Project("Could not read file: " + file.getFilename()));
 
+    }
+
+    @DeleteMapping("files/delete/{fileGuid}")
+    public ResponseEntity<ResponseMessage> deleteFile(@PathVariable String fileGuid) {
+        String message;
+        if (storageService.delete(fileGuid)) {
+            message = fileGuid + " deleted! ";
+        } else {
+            message = "Could not delete this file !";
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
     }
 
 }

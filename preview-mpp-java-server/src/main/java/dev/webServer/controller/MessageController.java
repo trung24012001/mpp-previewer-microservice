@@ -63,19 +63,6 @@ public class MessageController {
         return ResponseEntity.status(HttpStatus.OK).body(fileInfo);
     }
 
-    @DeleteMapping("files/delete/{filename:.+}")
-    public ResponseEntity<ResponseMessage> deleteFile(@PathVariable String filename) {
-        String message;
-        if (storageService.delete(filename)) {
-            message = filename + " deleted! ";
-        } else {
-            message = "Could not delete this file !";
-        }
-
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-    }
-
-
     @GetMapping(
             value = "/files/gantt-chart-image/{filename:.+}",
             produces = MediaType.IMAGE_JPEG_VALUE
